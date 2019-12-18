@@ -1,18 +1,27 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Bienvenue Wild Hunter !</h1>
+    <p>Lance toi dans une chasse au trésor sans plus attendre !</p>
+    <router-link to="/search"><i class="far fa-compass"></i></router-link>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'home',
-  components: {
-    HelloWorld
-  }
 }
 </script>
+
+<style scoped>
+  i {
+    font-size: 15em;
+    color: black;
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+    transition: transform .8s ease-in-out;
+  }
+  i:hover {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+</style>
