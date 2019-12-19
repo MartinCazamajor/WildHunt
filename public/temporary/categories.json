@@ -1,0 +1,18 @@
+{
+    "category1": {
+        "name":"food",
+        "quantity": 15
+    },
+    "category2": {
+        "name":"mode",
+        "quantity": 23
+    },
+    "category3": {
+        "name":"music",
+        "quantity": 12
+    },
+    "category4": {
+        "name":"pharmacy",
+        "quantity": 23
+    }
+}
