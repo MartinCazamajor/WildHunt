@@ -1,18 +1,14 @@
 {
     "category1": {
-        "name":"food",
-        "quantity": 15
+        "name":"pharmacy"
     },
     "category2": {
-        "name":"mode",
-        "quantity": 23
+        "name":"beauty"
     },
     "category3": {
-        "name":"music",
-        "quantity": 12
+        "name":"restaurant"
     },
     "category4": {
-        "name":"pharmacy",
-        "quantity": 23
+        "name":"shopping"
     }
 }

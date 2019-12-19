@@ -3,7 +3,9 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Search from '../views/Search.vue'
 import Hunt from '../views/Hunt.vue'
+import VueSimpleAlert from "vue-simple-alert"
 
+Vue.use(VueSimpleAlert)
 Vue.use(VueRouter)
 
 const routes = [
@@ -26,7 +28,7 @@ const routes = [
     component: Search,
   },
   {
-    path: '/hunt/:name',
+    path: '/hunt/:name/:long/:lat',
     name: 'hunt',
     component: Hunt
   }
