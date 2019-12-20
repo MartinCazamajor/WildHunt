@@ -1,23 +1,27 @@
 <template>
-    <div class="container">
-        <h2>A toi de trouver le trésor !</h2>
-        <p>Dirige toi vers le {{ direction.vertical }} - {{ direction.horizontale }}</p>
-        <div class="progress mt-5" style="height: 40px">
-            <div class="progress-bar" role="progressbar" aria-valuenow="0" v-bind:style="{width: progression + '%'}" aria-valuemin="0" aria-valuemax="100">{{ distanceNow }} m</div>
-        </div>
-            <button class="btn btn-primary my-5" @click="manualMode">Mode manuel</button>
+    <div>
+        <i v-if="!load" id="loading" class="far fa-compass"></i>
 
-            <div v-if="manual" class="card container">
-
-                <p>Sud  <i class="fas fa-arrows-alt-h"></i>  Nord</p>
-                <input name="latitude" v-model="latManual" type="range" step="0.00001" min="-0.001" max="0.001"/>
-                |
-                <br>
-                <p>Ouest  <i class="fas fa-arrows-alt-h">  </i>Est</p>
-                <input name="longitude" v-model="longManual" type="range" step="0.00001" min="-0.001" max="0.001"/>
-                |
-                <br>
+        <div v-if="load" class="container">
+            <h2>A toi de trouver le trésor !</h2>
+            <p style="font-size: 1.5em">Dirige toi vers le {{ direction.vertical }} - {{ direction.horizontale }}</p>
+            <div class="progress mt-5" style="height: 40px">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" v-bind:style="{width: progression + '%'}" aria-valuemin="0" aria-valuemax="100">{{ distanceNow }} m</div>
             </div>
+                <button class="btn btn-primary my-5" @click="manualMode">Mode manuel</button>
+
+                <div v-if="manual" class="card container">
+
+                    <p>Sud  <i class="fas fa-arrows-alt-h"></i>  Nord</p>
+                    <input name="latitude" v-model="latManual" type="range" step="0.00001" min="-0.001" max="0.001"/>
+                    |
+                    <br>
+                    <p>Ouest  <i class="fas fa-arrows-alt-h">  </i>Est</p>
+                    <input name="longitude" v-model="longManual" type="range" step="0.00001" min="-0.001" max="0.001"/>
+                    |
+                    <br>
+                </div>
+        </div>
     </div>
 </template>
 
@@ -45,7 +49,8 @@ export default {
             direction: {
                 "vertical":"",
                 "horizontale":""
-            }
+            },
+            angle: 0,
         }
     },
 
@@ -68,12 +73,16 @@ export default {
                         } else {
                             this.direction.horizontale = "Ouest"
                         }
-                        if (this.distanceNow <= 10) {
+                        if (this.distanceNow <= 20) {
                             this.$alert('Felicitation ! Tu as trouvé ' + this.treasureName + ' tu as gagné: ' + this.treasure);
                         }
                     }
             },1000);
         })
+
+        window.setInterval(() => {
+            document.getElementById('loading').style.transform="rotateZ(" + this.angle++ +"deg)";
+        }, 500)
     },
 
     methods: {
@@ -144,5 +153,9 @@ export default {
 <style>
 .progress {
     font-size: 1.5em;
+}
+#loading {
+    font-size: 15em;
+    color: black;
 }
 </style>
